@@ -1,0 +1,47 @@
+PODS:
+  - cunning_document_scanner (1.0.0):
+    - Flutter
+  - Flutter (1.0.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.4.8):
+    - Flutter
+  - printing (1.0.0):
+    - Flutter
+  - share_plus (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - cunning_document_scanner (from `.symlinks/plugins/cunning_document_scanner/ios`)
+  - Flutter (from `Flutter`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - printing (from `.symlinks/plugins/printing/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
+
+EXTERNAL SOURCES:
+  cunning_document_scanner:
+    :path: ".symlinks/plugins/cunning_document_scanner/ios"
+  Flutter:
+    :path: Flutter
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  printing:
+    :path: ".symlinks/plugins/printing/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
+
+SPEC CHECKSUMS:
+  cunning_document_scanner: 43a2bda11ef6a33fd68766b287ed056b4caf6a06
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+  permission_handler_apple: 92d754bbaa7361d436db2d6c3c1c2a0fdcec462e
+  printing: 54ff03f28fe9ba3aa93358afb80a8595a071dd07
+  share_plus: 50da8cb520a8f0f65671c6c6a99b3617ed10a58a
+
+PODFILE CHECKSUM: e8aaa87d204285fd6cb3daab9d773e006ea8c655
+
+COCOAPODS: 1.16.2
