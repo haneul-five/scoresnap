@@ -29,11 +29,18 @@ class ImageProcessor {
 
   /// Pure, isolate-safe processing entry point.
   static Uint8List _processSync(_ProcessParams params) {
-    final decoded = img.decodeImage(params.bytes);
-    if (decoded == null) {
+    final raw = img.decodeImage(params.bytes);
+    if (raw == null) {
       // Undecodable input: hand the original bytes back untouched.
       return params.bytes;
     }
+    // Normalize to 8-bit. iPhone photos frequently decode as 16-bit (uint16),
+    // which makes the 0..255 luminance math and the Sauvola threshold (R = 128)
+    // wildly wrong — producing an almost all-black page. Converting up front
+    // keeps every downstream computation on a consistent 0..255 scale.
+    final decoded = raw.format == img.Format.uint8
+        ? raw
+        : raw.convert(format: img.Format.uint8);
     switch (params.filter) {
       case ImageFilterType.original:
         return img.encodePng(decoded);
