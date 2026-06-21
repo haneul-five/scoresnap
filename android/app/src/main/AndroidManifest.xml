@@ -25,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- Crop UI for gallery imports (image_cropper / uCrop). -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!-- Pre-download the on-device ML Kit Document Scanner model at install time so the
              first scan does not stall while the model is fetched via Google Play services. -->
         <meta-data

@@ -7,6 +7,8 @@
 ## 주요 기능
 
 - 카메라로 악보 촬영 → 자동 문서 경계 검출 및 원근 보정 (네이티브 스캐너 UI)
+- **갤러리에서 기존 사진 가져오기** → 자르기/회전 보정 후 동일 파이프라인으로 변환
+  (iOS·Android 모두 동작)
 - 악보 최적화 흑백 이진화: 그림자/조명 불균일에 강한 **Sauvola 적응형 임계화**로
   오선과 음표를 또렷하게 보존
 - 필터 선택: Original / Grayscale / B&W (악보 기본값은 B&W)
@@ -20,6 +22,8 @@
 - **Flutter 3.29 / Dart 3.7**
 - 스캔(촬영·경계검출·원근보정): [`cunning_document_scanner`](https://pub.dev/packages/cunning_document_scanner)
   — Android는 Google ML Kit Document Scanner, iOS는 Apple VisionKit (둘 다 on-device)
+- 갤러리 가져오기·자르기: [`image_picker`](https://pub.dev/packages/image_picker) +
+  [`image_cropper`](https://pub.dev/packages/image_cropper)
 - 이미지 처리: [`image`](https://pub.dev/packages/image) (순수 Dart) + 직접 구현한 Sauvola 이진화
 - PDF: [`pdf`](https://pub.dev/packages/pdf) + [`printing`](https://pub.dev/packages/printing)
 - 저장: [`path_provider`](https://pub.dev/packages/path_provider) + `dart:io`
@@ -94,6 +98,9 @@ flutter run
   단위 테스트는 통과하지만, 촬영/공유 경로는 기기 빌드로 확인해야 합니다.
 - Sauvola 파라미터(window 25, k 0.34, R 128)는 일반적인 악보 사진 기준 기본값입니다.
   필요하면 `services/image_processor.dart`에서 조정하세요.
+- `image_cropper`는 **11.x로 고정**되어 있습니다. 12.x는 TOCropViewController 3.x(iOS 26
+  "Liquid Glass" UI)를 요구해 Xcode 16+가 필요합니다. Xcode를 16 이상으로 올리면 12.x로
+  올려도 됩니다.
 
 ## 라이선스
 

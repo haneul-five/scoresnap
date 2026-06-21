@@ -2,6 +2,11 @@ PODS:
   - cunning_document_scanner (1.0.0):
     - Flutter
   - Flutter (1.0.0)
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.8.0)
+  - image_picker_ios (0.0.1):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -11,20 +16,31 @@ PODS:
     - Flutter
   - share_plus (0.0.1):
     - Flutter
+  - TOCropViewController (2.8.0)
 
 DEPENDENCIES:
   - cunning_document_scanner (from `.symlinks/plugins/cunning_document_scanner/ios`)
   - Flutter (from `Flutter`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - printing (from `.symlinks/plugins/printing/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
+
+SPEC REPOS:
+  trunk:
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   cunning_document_scanner:
     :path: ".symlinks/plugins/cunning_document_scanner/ios"
   Flutter:
     :path: Flutter
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
@@ -37,10 +53,13 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   cunning_document_scanner: 43a2bda11ef6a33fd68766b287ed056b4caf6a06
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  image_cropper: 64567491beea6cd1bc4b11948e2babb590de5826
+  image_picker_ios: 7fe1ff8e34c1790d6fff70a32484959f563a928a
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   permission_handler_apple: 92d754bbaa7361d436db2d6c3c1c2a0fdcec462e
   printing: 54ff03f28fe9ba3aa93358afb80a8595a071dd07
   share_plus: 50da8cb520a8f0f65671c6c6a99b3617ed10a58a
+  TOCropViewController: 797deaf39c90e6e9ddd848d88817f6b9a8a09888
 
 PODFILE CHECKSUM: e8aaa87d204285fd6cb3daab9d773e006ea8c655
 

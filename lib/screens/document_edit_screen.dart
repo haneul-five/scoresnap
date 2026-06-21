@@ -8,6 +8,7 @@ import '../models/scan_document.dart';
 import '../models/scan_page.dart';
 import '../providers/document_edit_controller.dart';
 import '../providers/documents_store.dart';
+import '../services/gallery_service.dart';
 import '../services/pdf_service.dart';
 import '../services/scanner_service.dart';
 import '../widgets/busy_overlay.dart';
@@ -28,6 +29,7 @@ class DocumentEditScreen extends StatefulWidget {
 class _DocumentEditScreenState extends State<DocumentEditScreen> {
   late final DocumentEditController _controller;
   final ScannerService _scanner = const ScannerService();
+  final GalleryService _gallery = const GalleryService();
   final PdfService _pdf = const PdfService();
 
   ImageFilterType _selectedFilter = ImageFilterType.blackwhite;
@@ -66,6 +68,28 @@ class _DocumentEditScreenState extends State<DocumentEditScreen> {
       paths = await _scanner.scanPages();
     } on ScannerException catch (e) {
       messenger.showSnackBar(SnackBar(content: Text(e.message)));
+      return;
+    }
+    try {
+      await _controller.addPagesFromScan(paths, _selectedFilter);
+    } catch (e) {
+      if (mounted) {
+        messenger.showSnackBar(
+          SnackBar(content: Text('Could not add pages: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _addFromGallery() async {
+    final messenger = ScaffoldMessenger.of(context);
+    List<String> paths;
+    try {
+      paths = await _gallery.pickAndCropImages();
+    } catch (e) {
+      messenger.showSnackBar(
+        SnackBar(content: Text('Could not import from gallery: $e')),
+      );
       return;
     }
     try {
@@ -166,9 +190,14 @@ class _DocumentEditScreenState extends State<DocumentEditScreen> {
             title: _EditableTitle(title: doc.title, onChanged: _controller.rename),
             actions: [
               IconButton(
-                tooltip: 'Add pages',
+                tooltip: 'Add pages (scan)',
                 onPressed: busy ? null : _addPages,
                 icon: const Icon(Icons.add_a_photo_outlined),
+              ),
+              IconButton(
+                tooltip: 'Add pages (gallery)',
+                onPressed: busy ? null : _addFromGallery,
+                icon: const Icon(Icons.photo_library_outlined),
               ),
               IconButton(
                 tooltip: 'Print',
